@@ -6,124 +6,85 @@
 <title>Which Cat Are You?</title>
 
 <style>
-
-/* Background */
 body{
-font-family: Arial, sans-serif;
-background: linear-gradient(to right,#ffd6e8,#fff0f5);
+font-family: Arial;
+background: linear-gradient(135deg,#ff9a9e,#fad0c4);
 text-align:center;
-padding:20px;
+margin:0;
+padding:0;
 }
 
-/* Title */
-h1{
-color:#ff4d88;
-}
-
-/* Form Styling */
-input, select, button{
-padding:12px;
-margin:10px;
+.container{
+background:white;
 width:90%;
-max-width:280px;
+max-width:400px;
+margin:40px auto;
+padding:25px;
+border-radius:15px;
+box-shadow:0 0 20px rgba(0,0,0,0.2);
+animation:fadeIn 1s ease;
+}
+
+@keyframes fadeIn{
+from{opacity:0; transform:translateY(20px);}
+to{opacity:1;}
+}
+
+h1{
+color:#ff6f61;
+}
+
+input,select{
+width:90%;
+padding:10px;
+margin:10px;
 border-radius:8px;
 border:1px solid #ccc;
 }
 
-/* Button Style */
 button{
-background:#ff4d88;
+background:#ff6f61;
 color:white;
+padding:12px 25px;
 border:none;
-font-size:16px;
+border-radius:8px;
 cursor:pointer;
+transition:0.3s;
 }
 
 button:hover{
-background:#e6005c;
+background:#ff3b2e;
 }
-
-/* Result Box */
-#result{
-margin-top:25px;
-padding:20px;
-background:white;
-border-radius:12px;
-box-shadow:0 0 15px pink;
-}
-
-/* Cat Image */
-#result img{
-width:250px;
-margin-top:15px;
-border-radius:12px;
-}
-
 </style>
 </head>
 
 <body>
 
+<div class="container">
+
 <h1>🐱 Which Cat Are You?</h1>
 
-<input type="text" id="name" placeholder="Enter your name"><br>
+<form action="result.html">
 
-<select id="personality">
+<input type="text" name="name" placeholder="Enter your name" required>
+
+<br>
+
+<select name="interest" required>
 <option value="">Choose Personality</option>
-<option value="cute">Cute & Friendly</option>
-<option value="lazy">Lazy & Relaxed</option>
-<option value="playful">Playful & Energetic</option>
-<option value="royal">Royal & Elegant</option>
-</select><br>
+<option value="lazy">Lazy</option>
+<option value="playful">Playful</option>
+<option value="royal">Royal</option>
+<option value="friendly">Friendly</option>
+</select>
 
-<button onclick="findCat()">Find My Cat 🐾</button>
+<br>
 
-<div id="result"></div>
+<button type="submit">Find My Cat</button>
 
-<script>
+</form>
 
-function findCat(){
-
-let name=document.getElementById("name").value;
-let personality=document.getElementById("personality").value;
-
-let cat="";
-let image="";
-let info="";
-
-if(personality==="cute"){
-cat="Persian Cat";
-image="images/persian.jpg";
-info="Persian cats are loving, calm and very fluffy. They enjoy peaceful environments and lots of cuddles.";
-}
-
-else if(personality==="lazy"){
-cat="British Shorthair";
-image="images/british.jpg";
-info="British Shorthairs are relaxed and quiet cats. They love sleeping and staying comfortable.";
-}
-
-else if(personality==="playful"){
-cat="Bengal Cat";
-image="images/bengal.jpg";
-info="Bengal cats are energetic and playful. They love running, climbing and exploring.";
-}
-
-else if(personality==="royal"){
-cat="Siamese Cat";
-image="images/siamese.jpg";
-info="Siamese cats are elegant, intelligent and very social. They love attention and interaction.";
-}
-
-document.getElementById("result").innerHTML=
-"<h2>Hello "+name+" 🐾</h2>"+
-"<h3>You are like a "+cat+"</h3>"+
-"<p>"+info+"</p>"+
-"<img src='"+image+"'>";
-
-}
-
-</script>
+</div>
 
 </body>
 </html>
