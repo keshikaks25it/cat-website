@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Cat Result</title>
+
+<style>
+
+body{
+font-family: Arial;
+background:#1b1b1b;
+color:white;
+text-align:center;
+padding:20px;
+}
+
+.card{
+max-width:450px;
+margin:auto;
+background:#2b2b2b;
+padding:20px;
+border-radius:15px;
+box-shadow:0 0 20px rgba(255,255,255,0.2);
+animation:fadeIn 1s ease;
+}
+
+@keyframes fadeIn{
+from{opacity:0; transform:scale(0.8);}
+to{opacity:1;}
+}
+
+img{
+width:80%;
+max-width:300px;
+margin-top:20px;
+border-radius:12px;
+transition:0.5s;
+}
+
+h1{
+color:#ffcc70;
+}
+
+p{
+font-size:16px;
+line-height:1.5;
+}
+
+button{
+margin-top:20px;
+padding:10px 25px;
+background:#ffcc70;
+border:none;
+border-radius:8px;
+cursor:pointer;
+font-weight:bold;
+transition:0.3s;
+}
+
+button:hover{
+background:#ffc13d;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h1 id="resultText"></h1>
+
+<img id="catImage">
+
+<p id="catDescription"></p>
+
+<button onclick="history.back()">⬅ Back</button>
+
+</div>
+
+<script>
+
+let params = new URLSearchParams(window.location.search);
+
+let name = params.get("name");
+let interest = params.get("interest");
+
+let cat="";
+let image="";
+let desc="";
+let glow="";
+
+if(interest==="lazy"){
+cat="Persian Cat 😴";
+image="images/persian.jpg";
+desc="You love comfort, relaxation and peaceful vibes. You enjoy quiet and cozy environments.";
+glow="0 0 20px #ffc6a5";
+}
+
+else if(interest==="playful"){
+cat="Bengal Cat 🎾";
+image="images/bengal.jpg";
+desc="You are energetic, curious and adventurous. You enjoy fun and excitement.";
+glow="0 0 20px #ffa500";
+}
+
+else if(interest==="royal"){
+cat="Siamese Cat 👑";
+image="images/siamese.jpg";
+desc="You have elegance and confidence. You enjoy attention and leadership.";
+glow="0 0 20px #87cefa";
+}
+
+else if(interest==="friendly"){
+cat="Ragdoll Cat ❤️";
+image="images/ragdoll.jpg";
+desc="You are caring, social and emotional. People feel comfortable around you.";
+glow="0 0 20px #ff9aa2";
+}
+
+document.getElementById("resultText").innerHTML =
+name + ", You Are a " + cat;
+
+let img=document.getElementById("catImage");
+img.src=image;
+img.style.boxShadow=glow;
+
+document.getElementById("catDescription").innerHTML = desc;
+
+</script>
+
+</body>
+</html>
